@@ -1,0 +1,24 @@
+current directory: /usr/local/bundle/gems/psych-5.1.0/ext/psych
+/usr/local/bin/ruby -I /usr/local/lib/ruby/3.1.0 -r ./siteconf20230905-106-2yho0p.rb extconf.rb
+checking for yaml.h... yes
+checking for yaml_get_version() in -lyaml... yes
+creating Makefile
+
+current directory: /usr/local/bundle/gems/psych-5.1.0/ext/psych
+make DESTDIR\= clean
+cd libyaml && make clean
+/bin/sh: 1: cd: can't cd to libyaml
+make: [Makefile:281: clean-so] Error 2 (ignored)
+
+current directory: /usr/local/bundle/gems/psych-5.1.0/ext/psych
+make DESTDIR\=
+compiling psych.c
+compiling psych_emitter.c
+compiling psych_parser.c
+compiling psych_to_ruby.c
+compiling psych_yaml_tree.c
+linking shared-object psych.so
+
+current directory: /usr/local/bundle/gems/psych-5.1.0/ext/psych
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 psych.so ./.gem.20230905-106-xt1dsw

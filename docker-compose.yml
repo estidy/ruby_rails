@@ -1,0 +1,44 @@
+version: "3"
+services:
+  db:
+    image: mariadb:11.0.3
+    environment:
+      - MYSQL_DATABASE=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - db_data:/var/lib/mysql
+
+  web_rails: &web
+    environment:
+      - "CXXFLAGS=-std=c++14"
+    build:
+      context: .
+      args:
+        # [Choice] Ruby version: 3, 3.1.1
+        RUBY_VERSION: 3.1.1
+        # [Choice] Rails version: 7.0, 7.0.2.3
+        RAILS_VERSION: 7.0.2.3
+        # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
+        USER_UID: 1000
+        USER_GID: 1000
+    volumes:
+      - ./app:/home/docker
+      - ./gems:/usr/local/bundle
+    command:  bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_USER=root
+      - UPLOAD_LIMIT=100M
+      - MAX_EXECUTION_TIME=600
+      - MEMORY_LIMIT=512M
+    ports:
+      - 80:80
+
+volumes:
+  db_data:
