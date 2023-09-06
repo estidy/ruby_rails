@@ -21,3 +21,14 @@ rails db:create
 exit
 rails db:migrate
 exit
+rails g controller Products index show add edit
+rails destroy controller Products index show add edit
+rails g controller Products index show new edit
+rails routes
+clear
+rails routes
+clear
+rails generate model Product title:string description:text price:integer
+rails db:migrate
+bundle install
+exit
