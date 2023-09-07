@@ -35,3 +35,4 @@ exit
 rails db:seed
 rails db:seed
 exit
+rails routes
