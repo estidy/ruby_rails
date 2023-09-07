@@ -1,2 +1,18 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<%= link_to 'Volver', products_path %>
+<div class="card text-center">
+  <div class="card-header">
+  Datos de Producto
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= @product.title %> </h5>
+    <p class="card-text">   <%= @product.description %></p>
+    <div>
+         <span>Fecha de Creacion</span>
+         <p class="card-text">   <%= @product.created_at %></p>
+    </div>    
+  </div>
+  <div class="card-footer text-muted">
+  <span> ultima actualizacion</span>
+  <p class="card-text">   <%= @product.updated_at %></p>
+  </div>
+</div>
