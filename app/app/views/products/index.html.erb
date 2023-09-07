@@ -1,2 +1,26 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1> Productos </h1>
+<div class="d-flex">
+<%= button_to "Nuevo Producto", new_product_path, method: :get %>
+</div>
+<div>
+    <table class="table table-info table-striped">
+    <ol class="fs-2">
+    <thead class="table-secondary">
+        <td class="text-center"> Id </td>
+        <td class="text-center"> Nombre </td>
+        <td class="text-center"> Precio </td>
+        <td colspan=3 class="text-center"> Acciones </td>
+    </thead>
+    <% @products.each do |product| %>
+        <tr>
+        <td class="text-center"> <%= product.id %> </td>
+        <td class="text-center"> <%= product.title %> </td>
+        <td class="text-center"> <%= product.price %> </td>
+        <td class="text-center"><%= button_to "Show",product_path(product.id),method: :get %></td>
+        <td class="text-center"><%= button_to "Delete",product_path(product.id),method: :delete %></td>
+        </tr>
+    <% end %>
+    </ol>
+    </table>
+</div>
+
