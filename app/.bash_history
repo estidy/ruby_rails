@@ -32,3 +32,6 @@ rails generate model Product title:string description:text price:integer
 rails db:migrate
 bundle install
 exit
+rails db:seed
+rails db:seed
+exit
