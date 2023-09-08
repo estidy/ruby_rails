@@ -12,7 +12,11 @@
     </div>
     <div class="card-body">
       <h5 class="card-title"> <%= @product.title %> </h5>
-      <p class="card-text">   <%= @product.description %></p>  
+      <p class="card-text">   <%= @product.description %></p> 
+      <div>
+          <h5 class="card-title"> Precio </h5>
+          <p class="card-text"> $ <%= @product.price %></p>
+       </div> 
     </div>
     <div class="card-footer text-muted d-flex justify-content-between">
       <div>
