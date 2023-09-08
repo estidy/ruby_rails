@@ -1,2 +1,14 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<div class="container mt-5">
+
+    <%= link_to 'Volver', products_path %>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <h2 class="card-title mb-4">
+                <span>Nuevo Producto</span>
+            </h2>
+
+            <%= render 'form', product: @product %>
+        </div>
+    </div>    
+</div>
