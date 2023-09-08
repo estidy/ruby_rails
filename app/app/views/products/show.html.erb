@@ -1,18 +1,20 @@
-<%= link_to 'Volver', products_path %>
-<div class="card text-center">
-  <div class="card-header">
-  Datos de Producto
+<div class="container mt-5">
+  <%= link_to 'Volver', products_path %>
+
+  <div class="card text-center my-5">
+    <div class="card-header">
+        <h4>Datos del Producto</h4>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> <%= @product.title %> </h5>
+      <p class="card-text">   <%= @product.description %></p>
+      <h5 class="card-title"> Fecha de Creacion:  </h5>
+      <p class="card-text"> <%= @product.created_at %></p>   
+    </div>
+    <div class="card-footer text-muted">
+      <span> ultima actualizacion</span>
+      <p class="card-text">   <%= @product.updated_at %></p>
+    </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title"> <%= @product.title %> </h5>
-    <p class="card-text">   <%= @product.description %></p>
-    <div>
-         <span>Fecha de Creacion</span>
-         <p class="card-text">   <%= @product.created_at %></p>
-    </div>    
-  </div>
-  <div class="card-footer text-muted">
-  <span> ultima actualizacion</span>
-  <p class="card-text">   <%= @product.updated_at %></p>
-  </div>
+  
 </div>
