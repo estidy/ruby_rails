@@ -1,0 +1,34 @@
+<%= form_with(model: @product, class: 'row g-3 my-3') do |form| %>
+    <% if @product.errors.any? %>
+        <ul class="alert alert-warning">
+            <% @product.errors.full_messages.each do |error| %>
+            <li> <%= error %> </li>
+            <% end %>
+        </ul>
+    <% end %>
+
+    <div class="col-md-6">
+        <%= form.label :Titulo, class: 'form-label', for: 'inputTitle' %>
+        <%= form.text_field :title, class: 'form-control', id:'inputTitle' %>
+    </div>
+
+    <div class="col-md-6">
+        <%= form.label :Precio, class: 'form-label', for: 'inputPrice' %>
+        <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend">$</span>
+            <%= form.number_field :price, class: 'form-control', id: 'inputprice' %>
+        </div>        
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-floating">
+            <%= form.text_area :description, class: 'form-control', id: 'inputDescription' %>
+            <%= form.label :Descripcion, class: 'form-label', for: 'inputDescription' %>
+        </div>
+    </div>
+
+    <div class="col-12 text-center">
+        <%= form.submit "Crear Producto", class: 'btn btn-primary' %>
+    </div>
+    
+<% end %>
