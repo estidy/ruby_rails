@@ -36,3 +36,5 @@ rails db:seed
 rails db:seed
 exit
 rails routes
+rails generate migration addNullFalseToProductFields
+rails db:migrate
