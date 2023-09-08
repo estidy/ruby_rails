@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+
     if @product.save
        redirect_to products_path, notice: 'El producto se ha creado exitosamente'
     else
@@ -25,6 +26,13 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
+
+    if @product.update(product_params)
+       redirect_to products_path, notice: 'El producto se ha actualizado exitosamente'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
