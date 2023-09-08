@@ -1,19 +1,29 @@
 <div class="container mt-5">
+
   <%= link_to 'Volver', products_path %>
 
   <div class="card text-center my-5">
-    <div class="card-header">
-        <h4>Datos del Producto</h4>
+    <div class="card-header d-flex justify-content-between">
+        <h4 class="my-auto">Datos del Producto</h4>
+        <div>
+             <%= link_to 'Editar', edit_product_path(@product), class: 'btn btn-primary' %>
+             <%= link_to 'Eliminar', @product, method: :delete, class: 'btn btn-primary', data: { confirm: 'comfirmas eliminar este producto?' } %>
+        </div>
     </div>
     <div class="card-body">
       <h5 class="card-title"> <%= @product.title %> </h5>
-      <p class="card-text">   <%= @product.description %></p>
-      <h5 class="card-title"> Fecha de Creacion:  </h5>
-      <p class="card-text"> <%= @product.created_at %></p>   
+      <p class="card-text">   <%= @product.description %></p>  
     </div>
-    <div class="card-footer text-muted">
-      <span> ultima actualizacion</span>
-      <p class="card-text">   <%= @product.updated_at %></p>
+    <div class="card-footer text-muted d-flex justify-content-between">
+      <div>
+         <span> Fecha de Creacion</span>
+         <p class="card-text"> <%= @product.created_at.strftime("%d-%m-%Y %H:%M") %></p>
+      </div>
+
+      <div>
+          <span> Ultima Actualizacion</span>
+          <p class="card-text"> <%= @product.updated_at.strftime("%d-%m-%Y %H:%M") %></p>
+      </div>
     </div>
   </div>
   
