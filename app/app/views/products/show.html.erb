@@ -7,7 +7,9 @@
         <h4 class="my-auto">Datos del Producto</h4>
         <div>
              <%= link_to 'Editar', edit_product_path(@product), class: 'btn btn-primary' %>
-             <%= link_to 'Eliminar', @product, method: :delete, class: 'btn btn-primary', data: { confirm: 'comfirmas eliminar este producto?' } %>
+             <%= link_to 'Eliminar', product_path(@product), class: 'btn btn-primary',
+              data: {turbo_method: :delete,
+                     turbo_confirm: '¿Estas seguro que deseas eliminar este producto?'} %>
         </div>
     </div>
     <div class="card-body">
