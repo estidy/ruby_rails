@@ -7,6 +7,9 @@
             <% @products.each do |product| %>
             <div class="col-sm-3 mb-3 mb-sm-0">
                 <div class="card">
+                    <div class="card-img-top">
+                         <%= image_tag product.photo, class:'img-thumbnail', style:'height: 250px;width:100%;' if product.photo.attached? %>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title"><%= product.title %></h5>
                         <p class="card-text"> $ <%= product.price %></p>
