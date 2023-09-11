@@ -38,3 +38,6 @@ exit
 rails routes
 rails generate migration addNullFalseToProductFields
 rails db:migrate
+rails active_storage:install
+rails db:migrate
+exit
