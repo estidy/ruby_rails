@@ -1,8 +1,9 @@
-<h2 class="text-center my-5"> <- Conoce nuestro productos -> </h2>
+<h2 class="my-5"> Productos  </h2>
 <div class="d-flex">
 <%= link_to "Nuevo Producto", new_product_path, method: :get, class: 'btn btn-primary' %>
+<%= link_to "Categorias", categories_path, method: :get, class: 'btn btn-info' %>
 </div>
-<div class="container mt-5">
+<div class="container mt-3">
     <div class="row">        
     <%= render partial: 'product', collection: @products %>      
     </div>
