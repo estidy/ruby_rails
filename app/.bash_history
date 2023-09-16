@@ -41,3 +41,7 @@ rails db:migrate
 rails active_storage:install
 rails db:migrate
 exit
+rails generate scaffold Category name:string
+rails db:migrate
+rails db:seed
+exit
