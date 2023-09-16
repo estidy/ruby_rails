@@ -1,0 +1,23 @@
+<%= form_with(model: @category, class: 'row g-3') do |form| %>
+  
+  <% if @category.errors.any? %>
+      <ul class="alert alert-warning">
+          <% @category.errors.full_messages.each do |error| %>
+          <li> <%= error %> </li>
+          <% end %>
+      </ul>
+  <% end %>
+
+  <div class="col-sm-2 text-center py-2">
+       <%= form.label :Nombre, class: 'form-label', for: 'inputName' %>
+  </div>
+
+  <div class="col-sm-8">
+       <%= form.text_field :name, class: 'form-control', id:'inputName' %>
+  </div>
+
+  <div class="col-sm-2 px-0">
+       <%= form.submit class: 'btn btn-info w-100 mx-auto' %>
+  </div>
+  
+<% end %>

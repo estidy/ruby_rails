@@ -1,0 +1,11 @@
+<li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="fw-bold fs-5 text me-auto ms-2"> 
+           <%= category.name %> 
+      </div>
+      <div class="d-flex">
+          <%= link_to "Editar", edit_category_path(category), class: 'btn btn-info me-2' %>
+          <%= link_to 'Eliminar', category_path(category), class: 'btn btn-info',
+              data: {turbo_method: :delete,
+                     turbo_confirm: '¿Estas seguro que deseas eliminar esta categoria?'} %>
+      </div>
+</li>

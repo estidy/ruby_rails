@@ -1,0 +1,13 @@
+<h2 class="my-5"> Categorias  </h2>
+
+<div class="d-flex">
+<%= link_to "Nueva Categoria", new_category_path, class: 'btn btn-info' %>
+</div>
+
+<div class="container mt-3">
+    <div class="row">     
+    <ol class="list-group list-group-numbered ">   
+        <%= render partial: 'category', collection: @categories %>   
+    </ol>   
+    </div>
+</div>
