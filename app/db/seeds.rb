@@ -9,12 +9,6 @@
 Product.destroy_all
 Category.destroy_all
 
-100.times do |index|
-  Product.create!(title: Faker::Name.name,
-                description: Faker::Lorem.paragraph,
-                price: Faker::Number.number(digits: 4))
-end
-
 categories = [
              "Panaderia",
              "Cafeteria",
@@ -27,3 +21,11 @@ categories = [
 categories.each do |category|
      Category.create!(name: category)
 end
+
+100.times do |index|
+     Product.create!(title: Faker::Name.name,
+                   description: Faker::Lorem.paragraph,
+                   price: Faker::Number.number(digits: 4),
+                   category_id: rand(1..6))
+                  
+   end
