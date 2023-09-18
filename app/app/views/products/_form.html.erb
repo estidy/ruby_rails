@@ -27,9 +27,16 @@
         </div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-6">
          <%= form.label :Imagen, class: 'form-label', for: 'inputPhoto' %>
          <%= form.file_field :photo, class: 'form-control', id:'inputPhoto' %>
+    </div>
+    <div class="col-md-6">            
+         <%= form.label :Categoria, class: 'form-label', for: 'inputCategory' %>
+         <div">
+             <%= form.collection_select(:category_id, @categories, :id, :name,
+             {prompt: '-Seleccione una Categoria-'}, {class: 'form-select'}) %>
+         </div>
     </div>
 
     <div class="col-12 text-center">
