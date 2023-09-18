@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-     @products = Product.all.with_attached_photo
+     @products = Product.all.with_attached_photo.order(created_at: :desc)
   end
 
   def show
@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all.order(name: :asc)
   end
 
   def create
@@ -23,6 +24,7 @@ class ProductsController < ApplicationController
 
   def edit
     product
+    @categories = Category.all.order(name: :asc)
   end
 
   def update
@@ -41,7 +43,7 @@ class ProductsController < ApplicationController
   private
     #lista de parametros permitidos
   def product_params
-    params.require(:product).permit(:title, :description, :price, :photo)
+    params.require(:product).permit(:title, :description, :price, :photo, :category_id)
   end
 
   def product
