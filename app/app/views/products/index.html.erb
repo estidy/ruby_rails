@@ -1,11 +1,21 @@
-<h2 class="my-5"> Productos  </h2>
-<div class="d-flex">
-<%= link_to "Nuevo Producto", new_product_path, method: :get, class: 'btn btn-primary me-auto' %>
-<%= link_to "Categorias", categories_path, method: :get, class: 'btn btn-info me-0' %>
-</div>
-<div class="container mt-3">
-    <div class="row">        
-    <%= render partial: 'product', collection: @products %>      
+<%= turbo_frame_tag 'categories' do %>    
+    <div class="d-flex my-4">        
+        <%= link_to "Nuevo Producto", new_product_path, method: :get, class: 'btn btn-primary me-auto', 'data-turbo-frame': '_top' %>
+        <h2 class="me-auto"> Productos  </h2>
+        <%= link_to "Categorias", categories_path, method: :get, class: 'btn btn-info me-0', 'data-turbo-frame': '_top' %>
     </div>
-</div>
+    <div class="container mt-3">
+        <div class="row">   
+             <div class="col-sm-3 ">
+                 <%= render 'products/category' %> 
+             </div>     
+             <div class="col-sm-9 mb-2">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                     <%= render partial: 'product', collection: @products %>  
+                </div> 
+             </div>   
+        </div>
+    </div>
+<% end %>
+
 
