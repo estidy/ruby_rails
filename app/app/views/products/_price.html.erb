@@ -1,0 +1,9 @@
+<div>
+    <p class="text-center mb-1"> - Precio - </p>
+    <%= form_with url: products_path, method: :get do |form| %>
+        <%= form.number_field :min_price, placeholder: 'Precio Mínimo', onChange: 'this.form.requestSubmit()',
+         class:'form-control', value: params[:min_price] %>
+        <%= form.number_field :max_price, placeholder: 'Precio Máximo', onChange: 'this.form.requestSubmit()',
+         class:'form-control mt-3', value: params[:max_price] %>
+    <% end %>
+</div>
