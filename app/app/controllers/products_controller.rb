@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   def index
-     @products = Product.all.with_attached_photo.order(created_at: :desc)
+     @categories = Category.left_outer_joins(:products).distinct.select('categories.*, COUNT(products.id) AS products_count').group('categories.id').order(name: :asc).load_async
+     @products = Product.with_attached_photo.order(created_at: :desc).load_async
+     @all = Category.joins(:products).count
+     if params[:category_id]
+        @products = @products.where(category_id: params[:category_id])
+     end
   end
 
   def show
@@ -9,7 +14,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @categories = Category.all.order(name: :asc)
+    @categories = Category.order(name: :asc).load_async
   end
 
   def create
@@ -24,7 +29,7 @@ class ProductsController < ApplicationController
 
   def edit
     product
-    @categories = Category.all.order(name: :asc)
+    @categories = Category.order(name: :asc).load_async
   end
 
   def update
