@@ -1,0 +1,9 @@
+<div>
+    <%= form_with url: products_path, method: :get do |form| %>
+        <div class="input-group input-group-default my-3">
+            <span class="input-group-text" id="inputSearch">Buscar</span>
+            <%= form.text_field :search, placeholder: 'Que deseas buscar', onChange: 'this.form.requestSubmit()',
+            class:'form-control', value: params[:search] %>             
+        </div>
+    <% end %>
+</div>
