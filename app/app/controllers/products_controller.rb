@@ -3,15 +3,24 @@ class ProductsController < ApplicationController
      @categories = Category.left_outer_joins(:products).distinct.select('categories.*, COUNT(products.id) AS products_count').group('categories.id').order(name: :asc).load_async
      @products = Product.with_attached_photo.order(created_at: :desc).load_async
      @all = Category.joins(:products).count
+
      if params[:category_id]
         @products = @products.where(category_id: params[:category_id])
      end
+
      if params[:min_price].present?
         @products = @products.where("price >= ?", params[:min_price])
     end
+
     if params[:max_price].present?
        @products = @products.where("price <= ?", params[:max_price])
     end
+
+    if params[:search].present?
+      @products= @products.where( "MATCH( title,description ) AGAINST( ? )", params[:search] )
+
+    end
+
   end
 
   def show
