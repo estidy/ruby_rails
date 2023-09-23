@@ -114,3 +114,10 @@ rails db:reset
 rails db:seed
 rails db:reset
 exit
+bundle add pg_search
+bundle add pg_search
+exit
+rails generate migration add_index :products, [:title,:description], type: :fulltext
+rails generate migration add_index_to_products
+rails db:migrate
+exit
