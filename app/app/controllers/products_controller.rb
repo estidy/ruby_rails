@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
      @categories = Category.left_outer_joins(:products).distinct.select('categories.*, COUNT(products.id) AS products_count').group('categories.id').order(name: :asc).load_async
-     @products = Product.with_attached_photo.order(created_at: :desc).load_async
+     @products = Product.with_attached_photo
      @all = Category.joins(:products).count
 
      if params[:category_id]
@@ -20,6 +20,10 @@ class ProductsController < ApplicationController
       @products= @products.where( "MATCH( title,description ) AGAINST( ? )", params[:search] )
 
     end
+
+    order_by = Product::ORDER_BY.fetch(params[:order_by]&. to_sym, Product::ORDER_BY['Recientes'])
+
+    @products = @products.order(order_by).load_async
 
   end
 
