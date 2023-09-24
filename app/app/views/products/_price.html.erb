@@ -1,9 +1,16 @@
-<div>
-    <p class="text-center mb-1"> - Precio - </p>
+<div>    
     <%= form_with url: products_path, method: :get do |form| %>
+        <p class="text-center my-2"> - Precio - </p>
         <%= form.number_field :min_price, placeholder: 'Precio Mínimo', onChange: 'this.form.requestSubmit()',
          class:'form-control', value: params[:min_price] %>
         <%= form.number_field :max_price, placeholder: 'Precio Máximo', onChange: 'this.form.requestSubmit()',
          class:'form-control mt-3', value: params[:max_price] %>
+        <p class="text-center my-2"> - Ordenar - </p>
+        <div>
+             <%= form.select :order_by, options_for_select(
+                Product::ORDER_BY.keys.map { |order| [order, order] },
+                params[:order_by]), {}, { onChange: 'this.form.requestSubmit()', class:'form-select'}
+             %>
+        </div>
     <% end %>
 </div>
