@@ -13,8 +13,10 @@
   <body>
     <div class="container pt-4">
        <%= render 'layouts/flash' %> 
-       <%= render 'layouts/header' %>       
-       <%= yield %>
+       <%= render 'layouts/header' %>   
+       <div class="lg:container lg:mx-auto">    
+          <%= yield %>
+       </div>
        <%= render 'layouts/footer' %>  
      </div>
   </body>
