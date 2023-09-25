@@ -121,3 +121,5 @@ rails generate migration add_index :products, [:title,:description], type: :full
 rails generate migration add_index_to_products
 rails db:migrate
 exit
+bundle add pagy
+exit
