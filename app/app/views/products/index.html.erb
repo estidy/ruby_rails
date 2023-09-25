@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'categories' do %>    
+<%= turbo_frame_tag 'home' do %>    
     <div class="d-flex my-4">        
         <%= link_to "Nuevo Producto", new_product_path, method: :get, class: 'btn btn-primary me-auto', 'data-turbo-frame': '_top' %>
         <h2 class="me-auto"> Productos  </h2>
@@ -10,12 +10,16 @@
                  <%= render 'products/search' %> 
                  <%= render 'products/category' %> 
                  <%= render 'products/price' %> 
-             </div>     
-             <div class="col-sm-9 mb-2">
-                <div class="row row-cols-1 row-cols-md-3 g-4">
-                     <%= render partial: 'product', collection: @products %>  
-                </div> 
-             </div>   
+             </div>  
+             <%= turbo_frame_tag 'products', class:'col-sm-9 mb-2' do %> 
+                <%= turbo_frame_tag 'products-#{@pagy.page}', class:'row row-cols-1 row-cols-md-3 g-4' do %>    
+                    <%= render partial: 'product', collection: @products %>                                       
+                <% end %> 
+                <div class="mt-5 pt-3 d-flex justify-content-end"> 
+                      <%== pagy_bootstrap_nav(@pagy) %>    
+                 
+                </div>
+            <% end %>    
         </div>
     </div>
 <% end %>
