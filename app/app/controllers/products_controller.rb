@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
      @categories = Category.left_outer_joins(:products).distinct.select('categories.*, COUNT(products.id) AS products_count').group('categories.id').order(name: :asc).load_async
      @all = Category.joins(:products).count
 
-     @pagy, @products = pagy(FindProducts.new.call(params).load_async, items: 12)
+     @pagy, @products = pagy(FindProducts.new.call(product_params_index).load_async, items: 12)
   end
 
   def show
@@ -47,6 +47,10 @@ class ProductsController < ApplicationController
     #lista de parametros permitidos
   def product_params
     params.require(:product).permit(:title, :description, :price, :photo, :category_id)
+  end
+
+  def product_params_index
+    params.permit(:category_id, :min_price, :max_price, :search, :order_by)
   end
 
   def product
