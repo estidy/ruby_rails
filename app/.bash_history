@@ -123,3 +123,7 @@ rails db:migrate
 exit
 bundle add pagy
 exit
+rails g migration AddNotNullToCategoryName
+rails db:migrate
+clear
+exit
