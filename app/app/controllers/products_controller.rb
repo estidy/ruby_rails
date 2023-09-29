@@ -1,32 +1,9 @@
 class ProductsController < ApplicationController
   def index
      @categories = Category.left_outer_joins(:products).distinct.select('categories.*, COUNT(products.id) AS products_count').group('categories.id').order(name: :asc).load_async
-     @products = Product.with_attached_photo
      @all = Category.joins(:products).count
 
-     if params[:category_id]
-        @products = @products.where(category_id: params[:category_id])
-     end
-
-     if params[:min_price].present?
-        @products = @products.where("price >= ?", params[:min_price])
-    end
-
-    if params[:max_price].present?
-       @products = @products.where("price <= ?", params[:max_price])
-    end
-
-    if params[:search].present?
-      @products= @products.where( "MATCH( title,description ) AGAINST( ? )", params[:search] )
-
-    end
-
-    order_by = Product::ORDER_BY.fetch(params[:order_by]&. to_sym, Product::ORDER_BY[:Recientes])
-
-    @products = @products.order(order_by).load_async
-
-    @pagy, @products = pagy(@products, items: 12)
-
+     @pagy, @products = pagy(FindProducts.new.call(params).load_async, items: 12)
   end
 
   def show
