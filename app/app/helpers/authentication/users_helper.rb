@@ -1,0 +1,2 @@
+module Authentication::UsersHelper
+end
