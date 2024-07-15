@@ -127,3 +127,10 @@ rails g migration AddNotNullToCategoryName
 rails db:migrate
 clear
 exit
+rails generate model User email:string:uniq username:string:uniq password_digest:string
+rails db:migrate
+exit
+bundle
+rails generate controller authentication/users_controllers
+rails generate controller authentication/users
+exit
