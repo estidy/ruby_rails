@@ -134,3 +134,7 @@ bundle
 rails generate controller authentication/users_controllers
 rails generate controller authentication/users
 exit
+rails db:create
+rails db:migrate
+rails db:seed
+exit
